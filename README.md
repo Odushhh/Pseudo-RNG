@@ -6,12 +6,22 @@ This project implements a Pseudo-Random Number Generation technique for generati
 This program will iterate through a range of seeds and attempt to decrypt a known ciphertext using the generated keys. If the correct key is found, it will print the seed and the corresponding key.
 
 
-[Find the Pseudo-Random Number Generation Lab here](https://seedsecuritylabs.org/Labs_20.04/Crypto/Crypto_Random_Number/) 
+> [Find the Pseudo-Random Number Generation Lab here](https://seedsecuritylabs.org/Labs_20.04/Crypto/Crypto_Random_Number/) 
 
-[Download SEED-Ubunut 24.04](https://seedsecuritylabs.org/labsetup.html)
+> [Download SEED-Ubuntu 24.04](https://seedsecuritylabs.org/labsetup.html)
 
 ## Components
-Project structure:
+### Project structure:
+
+- **pseudo-rng/**
+  - **README.md**
+  - **generate_256bit_key**
+  - **generate_256bit_key.c**
+  - **generate_key**
+  - **generate_key.c**
+  - **guess_key**
+  - **guess_key.c**
+  - 
 
 pseudo-rng/
 ├── README.md
@@ -22,6 +32,7 @@ pseudo-rng/
 ├── guess_key
 ├── guess_key.c
 └── LICENSE
+
 
 - `generate_256bit_key.c`: Generates a 256-bit key using `/dev/urandom` for high-quality randomness.
 - `generate_key.c`: Generates a 128-bit key using the standard library's `rand()` function seeded with the current time.
@@ -36,9 +47,7 @@ pseudo-rng/
 - SEED-Ubuntu 20.04 VM (or you can tweak your Ubuntu to have SEED's capabilities)
 
 
-## Usage
-
-### Part 1: Generating an Encryption Key
+## Part 1: Generating an Encryption Key
 
 Create a file for generating a random key 
 ```nano generate_key.c```
@@ -56,7 +65,7 @@ N|B:
 > **rand()%256** keeps the generated number within the 0 to 255 range 
 
 
-### Part 2: Guessing the Key
+## Part 2: Guessing the Key
 
 Create a another file for the guessing key function/program 
 ```nano guess_key.c```
@@ -75,7 +84,7 @@ N|B:- Use the **EVP API** (for encryption/decryption and for the cipher) instead
 
 
 
-### Part 3: Getting random numbers from `/dev/random` and `/dev/urandom`
+## Part 3: Getting random numbers from `/dev/random` and `/dev/urandom`
 
 Generate the random numbers:
 ```cat /dev/random | hexdump```
