@@ -12,7 +12,18 @@ This program will iterate through a range of seeds and attempt to decrypt a know
 
 ## Components
 ### Project structure:
+```bash
+pseudo_rng/
+├── generate_256bit_key
+├── generate_256bit_key.c
+├── generate_key
+├── generate_key.c
+├── guess_key
+├── guess_key.c
+└── README.md
 
+
+```
 - **pseudo-rng/**
   - **README.md**
   - **generate_256bit_key**
@@ -21,17 +32,7 @@ This program will iterate through a range of seeds and attempt to decrypt a know
   - **generate_key.c**
   - **guess_key**
   - **guess_key.c**
-  - 
-
-pseudo-rng/
-├── README.md
-├── generate_256bit_key
-├── generate_256bit_key.c
-├── generate_key
-├── generate_key.c
-├── guess_key
-├── guess_key.c
-└── LICENSE
+  
 
 
 - `generate_256bit_key.c`: Generates a 256-bit key using `/dev/urandom` for high-quality randomness.
@@ -50,14 +51,16 @@ pseudo-rng/
 ## Part 1: Generating an Encryption Key
 
 Create a file for generating a random key 
-```nano generate_key.c```
+```bash 
+nano generate_key.c
+```
 > Check `generate_key.c` in the repo
 
-Compile code:
-```gcc generate_key.c -o generate_key```
-
-Run executable file & examine output:
-```./generate_key```
+Compile & Run code:
+```bash
+gcc generate_key.c -o generate_key
+./generate_key
+```
 
 N|B:
 - The function `rand()` will generate a constant sequence of random numbers, while `srand()` ensures there is a unique pattern every single time the code is executed.
@@ -68,17 +71,21 @@ N|B:
 ## Part 2: Guessing the Key
 
 Create a another file for the guessing key function/program 
-```nano guess_key.c```
+```bash
+nano guess_key.c
+```
 > Check `guess_key.c`  in the repo
 
-According to the PDF file, convert the timestamp given to seconds since the Unix Epoch
-```date -d "2018-04-17 23:08:49" +%s```
+Convert the timestamp given to seconds
+```bash
+date -d "2018-04-17 23:08:49" +%s
+```
 
 Compile code:
-```gcc guess_key.c -o guess_key```
-
-Run executable file & examine output:
-```./guess_key```
+```bash
+gcc guess_key.c -o guess_key
+./guess_key
+```
 
 N|B:- Use the **EVP API** (for encryption/decryption and for the cipher) instead of  **AES_DECRYPT**
 
@@ -87,28 +94,40 @@ N|B:- Use the **EVP API** (for encryption/decryption and for the cipher) instead
 ## Part 3: Getting random numbers from `/dev/random` and `/dev/urandom`
 
 Generate the random numbers:
-```cat /dev/random | hexdump```
-```cat /dev/urandom | hexdump```
+```bash 
+cat /dev/random | hexdump
+cat /dev/urandom | hexdump
+```
 
 Monitor entropy:
-```watch -n 0.1 cat /proc/sys/kernel/random/entropy_avail```
+```bash
+watch -n 0.1 cat /proc/sys/kernel/random/entropy_avail
+```
 
 Place results in new file:
-```head -c 1M /dev/random > output.bin```
+```bash
+head -c 1M /dev/random > output.bin
+```
 
 Check output file's details:
-```ent output.bin```
+```bash
+ent output.bin
+```
 
 
 ### Part 4: Generating a 256-bit Encryption Key
 
 Create a file for generating a random key 
-```nano generate_256bit_key.c```
+```bash
+nano generate_256bit_key.c
+```
 > Check `generate_256bit_key.c` in the repo
 
 Compile code & and run the executable file generated:
-```gcc generate_256bit_key.c -o generate_256bit_key```
-```./generate_256bit_key```
+```bash
+gcc generate_256bit_key.c -o generate_256bit_key
+./generate_256bit_key
+```
 
 
 -------------------------- FIN --------------------------
