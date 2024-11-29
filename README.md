@@ -21,24 +21,20 @@ pseudo_rng/
 ├── guess_key
 ├── guess_key.c
 └── README.md
-
-
 ```
-- **pseudo-rng/**
-  - **README.md**
-  - **generate_256bit_key**
-  - **generate_256bit_key.c**
-  - **generate_key**
-  - **generate_key.c**
-  - **guess_key**
-  - **guess_key.c**
-  
 
 
-- `generate_256bit_key.c`: Generates a 256-bit key using `/dev/urandom` for high-quality randomness.
-- `generate_key.c`: Generates a 128-bit key using the standard library's `rand()` function seeded with the current time.
-- `guess_key.c`: Attempts to guess a key by iterating through possible seeds and decrypting known ciphertext using the generated keys.
-- `guess_key`, `generate_256bit_key`, `generate_key` : Executable files
+- `generate_256bit_key.c`:
+> Generates a 256-bit key using `/dev/urandom` for high-quality randomness.
+
+- `generate_key.c`:
+> Generates a 128-bit key using the standard library's `rand()` function seeded with the current time.
+
+- `guess_key.c`:
+> Attempts to guess a key by iterating through possible seeds and decrypting known ciphertext using the generated keys.
+
+- `guess_key`, `generate_256bit_key`, `generate_key` :
+>Executable files
 
 
 
@@ -130,4 +126,4 @@ gcc generate_256bit_key.c -o generate_256bit_key
 ```
 
 
--------------------------- FIN --------------------------
+**+-------------------------------------+ FIN +-----------------------------------+**
